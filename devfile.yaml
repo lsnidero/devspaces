@@ -2,7 +2,7 @@ schemaVersion: 2.2.0
 metadata:
   name: Quarkus Java 17
 components:
-   name: tools
+  - name: tools
     container:
       image: registry.redhat.io/devspaces/udi-rhel8@sha256:bb951a5040851e9f17ca0d21771b428296326753363fd4d2b87ab1f7d35e72b3
       env:
