@@ -31,7 +31,8 @@ components:
       size: 1G
   - name: mysql
     container:
-      image: docker.io/library/mysql:8.0
+#      image: docker.io/library/mysql:8.0
+      image: openshift/mysql:8.0
       env:
         - name: MYSQL_ROOT_PASSWORD
           value: password
