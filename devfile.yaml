@@ -32,6 +32,15 @@ components:
   - name: mysql
     container:
       image: docker.io/library/mysql:8.0
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        - name: MYSQL_USER
+          value: myuser
+        - name: MYSQL_PASSWORD
+          value: password
+        - name: MYSQL_DATABASE
+          value: mydb
       endpoints:
         - name: mysql-port
           targetPort: 3306
