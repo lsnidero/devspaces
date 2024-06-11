@@ -48,7 +48,6 @@ components:
       cpuRequest: 100m
       memoryRequest: 25Mi
       memoryLimit: 50Mi
-      mountSources: true
 events:
   postStart:
     - install-java-17
