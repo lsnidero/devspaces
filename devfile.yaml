@@ -43,6 +43,7 @@ components:
 events:
   postStart:
     - install-java-17
+    - proxy-settings-xml
 commands:
   - id: install-java-17
     exec:
