@@ -43,7 +43,9 @@ components:
           value: mydb
       endpoints:
         - name: mysql-port
+          protocol: tcp
           targetPort: 3306
+          exposure: public
       cpuLimit: 300m
       cpuRequest: 100m
       memoryRequest: 25Mi
