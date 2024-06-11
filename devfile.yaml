@@ -35,8 +35,8 @@ components:
       endpoints:
         - name: mysql-port
           targetPort: 3306
-      cpuLimit: 0.3
-      cpuRequest: 0.1
+      cpuLimit: 300m
+      cpuRequest: 100m
       memoryRequest: 25Mi
       memoryLimit: 50Mi
       mountSources: true
