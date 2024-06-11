@@ -21,9 +21,9 @@ components:
       volumeMounts:
         - name: m2
           path: /home/user/.m2
-      cpuLimit: '4'
+      cpuLimit: '3'
       cpuRequest: '1'
-      memoryLimit: 8G
+      memoryLimit: 7.5G
       memoryRequest: 4G
       mountSources: true
   - name: m2
@@ -46,10 +46,10 @@ components:
           protocol: tcp
           targetPort: 3306
           exposure: public
-#      cpuLimit: 300m
-#      cpuRequest: 100m
-#      memoryRequest: 25Mi
-#      memoryLimit: 50Mi
+      cpuLimit: 300m
+      cpuRequest: 100m
+      memoryRequest: 25Mi
+      memoryLimit: 50Mi
 events:
   postStart:
     - install-java-17
