@@ -31,7 +31,8 @@ components:
       size: 1G
   - name: mysql
     container:
-      image: image-registry.openshift-image-registry.svc:5000/openshift/mysql:8.0-el9
+#      image: image-registry.openshift-image-registry.svc:5000/openshift/mysql:8.0-el9
+      image: docker.io/hashicorp/http-echo:latest
       env:
         - name: MYSQL_ROOT_PASSWORD
           value: password
@@ -46,10 +47,10 @@ components:
           protocol: tcp
           targetPort: 3306
           exposure: public
-          #      cpuLimit: 100m
-          #      cpuRequest: 50m
-          #      memoryRequest: 10Mi
-          #      memoryLimit: 50Mi
+      cpuLimit: 100m
+      cpuRequest: 50m
+      memoryRequest: 10Mi
+      memoryLimit: 50Mi
 events:
   postStart:
     - install-java-17
