@@ -23,7 +23,7 @@ components:
           path: /home/user/.m2
       cpuLimit: '3'
       cpuRequest: '1'
-      memoryLimit: 7.5G
+      memoryLimit: 8G
       memoryRequest: 4G
       mountSources: true
   - name: m2
@@ -31,8 +31,7 @@ components:
       size: 1G
   - name: mysql
     container:
-#      image: image-registry.openshift-image-registry.svc:5000/openshift/mysql:8.0
-      image: image-registry.openshift-image-registry.svc:5000/openshift/postgresql:13-el9
+      image: image-registry.openshift-image-registry.svc:5000/openshift/mysql:8.0-el9
       env:
         - name: MYSQL_ROOT_PASSWORD
           value: password
