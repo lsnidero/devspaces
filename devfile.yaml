@@ -47,10 +47,10 @@ components:
           protocol: tcp
           targetPort: 3306
           exposure: public
-      cpuLimit: 250m
-      cpuRequest: 100m
-      memoryRequest: 200Mi
-      memoryLimit: 250Mi
+      cpuLimit: '1'
+      cpuRequest: 500m
+      memoryRequest: 350Mi
+      memoryLimit: 512Mi
 events:
   postStart:
     - install-java-17
