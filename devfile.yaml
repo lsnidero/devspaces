@@ -16,19 +16,19 @@ components:
           protocol: tcp
           targetPort: 5005
         - exposure: public
-          name: rispondo-bff
+          name: bff
           protocol: http
           targetPort: 8080
         - exposure: public
-          name: rispondo-spese
+          name: spese
           protocol: http
           targetPort: 8081
         - exposure: public
-          name: rispondo-ionic
+          name: ionic
           protocol: http
           targetPort: 8100
         - exposure: public
-          name: rispondo-backoffice
+          name: backoffice
           protocol: http
           targetPort: 4200
       volumeMounts:
