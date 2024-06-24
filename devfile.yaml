@@ -15,11 +15,6 @@ components:
           name: debug
           protocol: tcp
           targetPort: 5005
-        - exposure: public
-          name: hello
-          protocol: http
-          targetPort: 8080
-          #path: /hello/greeting/devspaces-user
       volumeMounts:
         - name: m2
           path: /home/user/.m2
@@ -47,7 +42,6 @@ components:
         - name: mysql-port
           protocol: tcp
           targetPort: 3306
-          exposure: public
       cpuLimit: '1'
       cpuRequest: 500m
       memoryRequest: 350Mi
