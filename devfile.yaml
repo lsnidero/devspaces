@@ -55,7 +55,6 @@ events:
   postStart:
     - install-java-17
     - proxy-settings-xml
-    - install-ionic
 commands:
   - id: install-java-17
     exec:
@@ -69,12 +68,6 @@ commands:
       component: tools
       workingDir: /home/user/.m2
       commandLine: echo "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHNldHRpbmdzIHhtbG5zPSJodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy9TRVRUSU5HUy8xLjAuMCIKICAgICAgICAgIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiCiAgICAgICAgICB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly9tYXZlbi5hcGFjaGUub3JnL1NFVFRJTkdTLzEuMC4wIGh0dHA6Ly9tYXZlbi5hcGFjaGUub3JnL3hzZC9zZXR0aW5ncy0xLjAuMC54c2QiPgogIDxwbHVnaW5Hcm91cHM+CiAgPC9wbHVnaW5Hcm91cHM+CiAgPHByb3hpZXM+CiAgICA8cHJveHk+CiAgICAgIDxpZD5pc3RhdC1odHRwPC9pZD4KICAgICAgPGFjdGl2ZT50cnVlPC9hY3RpdmU+CiAgICAgIDxwcm90b2NvbD5odHRwPC9wcm90b2NvbD4KICAgICAgPGhvc3Q+cHJveHkuaXN0YXQuaXQ8L2hvc3Q+CiAgICAgIDxwb3J0PjgwODA8L3BvcnQ+CiAgICAgIDxub25Qcm94eUhvc3RzPmNsdXN0ZXIubG9jYWwsLmlzdGF0Lml0LC5zdmMsMTAuMC4wLjAvMTYsMTAuMTI4LjAuMC8xNCwxMC4xOC4xMDguMC8yNCwxMjcuMC4wLjEsMTcyLjMwLjAuMC8xNixhcGktaW50LnBhYXMuY2xvdWQuc3ZpbHVwcG8uaXN0YXQuaXQsbG9jYWxob3N0PC9ub25Qcm94eUhvc3RzPgogICAgPC9wcm94eT4KICAgIDxwcm94eT4KICAgICAgPGlkPmlzdGF0LWh0dHBzPC9pZD4KICAgICAgPGFjdGl2ZT50cnVlPC9hY3RpdmU+CiAgICAgIDxwcm90b2NvbD5odHRwczwvcHJvdG9jb2w+CiAgICAgIDxob3N0PnByb3h5LmlzdGF0Lml0PC9ob3N0PgogICAgICA8cG9ydD44MDgwPC9wb3J0PgogICAgICA8bm9uUHJveHlIb3N0cz5jbHVzdGVyLmxvY2FsLC5pc3RhdC5pdCwuc3ZjLDEwLjAuMC4wLzE2LDEwLjEyOC4wLjAvMTQsMTAuMTguMTA4LjAvMjQsMTI3LjAuMC4xLDE3Mi4zMC4wLjAvMTYsYXBpLWludC5wYWFzLmNsb3VkLnN2aWx1cHBvLmlzdGF0Lml0LGxvY2FsaG9zdDwvbm9uUHJveHlIb3N0cz4KICAgIDwvcHJveHk+CiAgPC9wcm94aWVzPgogIDxzZXJ2ZXJzPgogIDwvc2VydmVycz4KICA8bWlycm9ycz4KICA8L21pcnJvcnM+CiAgPHByb2ZpbGVzPgogIDwvcHJvZmlsZXM+Cjwvc2V0dGluZ3M+Cgo=" | base64 -d > settings.xml
-  - id: install-ionic
-    exec:
-      label: Add ionic cli
-      component: tools
-      workingDir: /home/user
-      commandLine: npm install ionic @angular/cli
   - id: 1-package
     exec:
       label: 1. Package the application
@@ -93,5 +86,12 @@ commands:
       group:
         kind: run
         isDefault: true
-
-
+  - id: 3-package-ionic
+    exec:
+      label: 3. Package Ionic application
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/rispondo-ionic/SOFTWARE
+      commandLine: npm install
+      group:
+        kind: build
+        isDefault: true
