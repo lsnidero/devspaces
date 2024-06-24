@@ -15,6 +15,22 @@ components:
           name: debug
           protocol: tcp
           targetPort: 5005
+        - exposure: public
+          name: rispondo-bff
+          protocol: http
+          targetPort: 8080
+        - exposure: public
+          name: rispondo-spese
+          protocol: http
+          targetPort: 8081
+        - exposure: public
+          name: rispondo-ionic
+          protocol: http
+          targetPort: 8100
+        - exposure: public
+          name: rispondo-backoffice
+          protocol: http
+          targetPort: 4200
       volumeMounts:
         - name: m2
           path: /home/user/.m2
