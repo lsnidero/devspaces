@@ -1,0 +1,38 @@
+{
+    "folders": [
+   
+        {
+            "name": "rispondo-ionic",
+            "path": "rispondo-ionic/SOFTWARE"
+        },
+        {
+            "name": "rispondo-bff",
+            "path": "rispondo-bff/SOFTWARE"
+        },
+        {
+            "name": "rispondo-backoffice",
+            "path": "rispondo-backoffice/SOFTWARE"
+        },
+        {
+            "name": "rispondo-spese",
+            "path": "rispondo-spese/SOFTWARE"
+        }
+    ],
+    "settings": {
+        "sqltools.connections": [
+            {
+                "mysqlOptions": {
+                    "authProtocol": "default",
+                    "enableSsl": "Disabled"
+                },
+                "previewLimit": 50,
+                "server": "localhost",
+                "port": 3306,
+                "driver": "MySQL",
+                "name": "rispondo",
+                "database": "mydb",
+                "username": "myuser"
+            }
+        ]
+    }
+}
