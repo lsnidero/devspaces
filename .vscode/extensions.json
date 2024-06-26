@@ -4,6 +4,7 @@
     "redhat.java",
     "redhat.vscode-quarkus",
     "vscjava.vscode-java-test",
-    "redhat.vscode-microprofile"
+    "redhat.vscode-microprofile",
+    "redhat.vscode-xml"
   ]
 }
