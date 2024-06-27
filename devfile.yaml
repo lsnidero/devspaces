@@ -99,7 +99,7 @@ commands:
       label: Run user-defined startup script from the /projects/.dotfiles/.startup shell file
       component: tools
       workingDir: /projects
-      commandLine: if [ -f .dotfiles/.startup ]; then source .dotfiles/.startup; fi
+      commandLine: if [ -f ".dotfiles/.startup" ]; then source .dotfiles/.startup; fi
   - id: 1-package
     exec:
       label: 1. Package the application
