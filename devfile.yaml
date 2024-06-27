@@ -1,6 +1,6 @@
 schemaVersion: 2.2.0
 metadata:
-  name: Quarkus Java 17
+  name: Quarkus Java 17 ISTAT
 components:
   - name: tools
     container:
@@ -67,6 +67,8 @@ events:
     - install-java-17
     - proxy-settings-xml
     - add-quarkus-cli
+    - set-env-var
+    - source-startup-scripts
 commands:
   - id: install-java-17
     exec:
@@ -86,6 +88,18 @@ commands:
       component: tools
       workingDir: /home/user/
       commandLine: curl -Ls https://sh.jbang.dev | bash -s - trust add https://repo1.maven.org/maven2/io/quarkus/quarkus-cli/ && curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --force quarkus@quarkusio
+  - id: set-env-var
+    exec:
+      label: Set user-specific environment variables
+      component: tools
+      workingDir: /home/user
+      commandLine: echo "export ISTAT_USERNAME=$(echo \$\{WORKSPACE_NAMESPACE%-istat-it*\})" >> /home/user/.bashrc
+  - id: source-startup-scripts
+    exec:
+      label: Run user-defined startup script from the /projects/.dotfiles/.startup shell file
+      component: tools
+      workingDir: /projects
+      commandLine: if [ ! -d ".dotfiles" ]; then mkdir .dotfiles; fi && if [ ! -f ".dotfiles/.startup" ]; then touch .dotfiles/.startup; fi && echo "if [ -f \"/projects/.dotfiles/.startup\" ]; then source /projects/.dotfiles/.startup; fi" >> /home/user/.bashrc
   - id: 1-package
     exec:
       label: 1. Package the application
