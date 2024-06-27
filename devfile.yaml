@@ -1,6 +1,6 @@
 schemaVersion: 2.2.0
 metadata:
-  name: Quarkus Java 17
+  name: Quarkus Java 17 ISTAT
 components:
   - name: tools
     container:
