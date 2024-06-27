@@ -93,7 +93,7 @@ commands:
       label: Set user-specific environment variables
       component: tools
       workingDir: /projects
-      commandLine: echo "export ISTAT_USERNAME=$(echo ${WORKSPACE_NAMESPACE%-istat-it*})" >> /home/user/.bashrc
+      commandLine: echo "export ISTAT_USERNAME=$(echo \$\{WORKSPACE_NAMESPACE%-istat-it*\})" >> /home/user/.bashrc
   - id: source-startup-scripts
     exec:
       label: Run user-defined startup script from the /projects/.dotfiles/.startup shell file
