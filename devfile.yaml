@@ -69,7 +69,6 @@ events:
     - add-quarkus-cli
     - set-env-var
     - source-startup-scripts
-    - workspace-definition
 projects:
   - name: rispondo-bff
     git:
