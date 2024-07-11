@@ -118,8 +118,8 @@ commands:
     exec:
       label: Copy workspace definition
       component: tools
-      workingDir: /projects
-      commandLine: cp -v /projects/devspaces/rispondo.code-workspace /projects
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: cp -v ${PROJECT_SOURCE}/rispondo.code-workspace ${PROJECTS_ROOT}
   - id: add-quarkus-cli
     exec:
       label: Add quarkus command line
