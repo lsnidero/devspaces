@@ -17,19 +17,19 @@ components:
           targetPort: 5005
         - exposure: public
           name: bff
-          protocol: http
+          protocol: https
           targetPort: 8080
         - exposure: public
           name: spese
-          protocol: http
+          protocol: https
           targetPort: 8081
         - exposure: public
           name: ionic
-          protocol: http
+          protocol: https
           targetPort: 8100
         - exposure: public
           name: backoffice
-          protocol: http
+          protocol: https
           targetPort: 4200
       volumeMounts:
         - name: m2
