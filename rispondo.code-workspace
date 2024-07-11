@@ -16,6 +16,10 @@
         {
             "name": "rispondo-spese",
             "path": "rispondo-spese/SOFTWARE"
+        },
+        {
+            "name": "receipt-ocr-service",
+            "path": "receipt-ocr-service/SOFTWARE"
         }
     ],
     "settings": {

@@ -69,13 +69,38 @@ events:
     - add-quarkus-cli
     - set-env-var
     - source-startup-scripts
+    - workspace-definition
 projects:
   - name: rispondo-bff
+    git:
+      remotes:
+        origin: "https://alm.istat.it/gitlab-api/area_0305/rispondo-bff.git"
+      checkoutFrom:
+        revision: dev/CRQ000000013610-N
+  - name: rispondo-spese
     git:
       remotes:
         origin: "https://alm.istat.it/gitlab-api/area_0305/rispondo-spese.git"
       checkoutFrom:
         revision: dev/CRQ000000013610-N
+  - name: rispondo-backoffice
+    git:
+      remotes:
+        origin: "https://alm.istat.it/gitlab-api/area_0305/rispondo-backoffice.git"
+      checkoutFrom:
+        revision: dev/CRQ000000013610-N
+  - name: rispondo-ionic
+    git:
+      remotes:
+        origin: "https://alm.istat.it/gitlab-api/area_0305/rispondo-ionic.git"
+      checkoutFrom:
+        revision: dev/CRQ000000013610-N
+  - name: receipt-ocr-service
+    git:
+      remotes:
+        origin: "https://alm.istat.it/gitlab-api/area_0305/receipt-ocr-service.git"
+      checkoutFrom:
+        revision: dev/CRQ000000013610-N         
 commands:
   - id: install-java-17
     exec:
@@ -89,6 +114,12 @@ commands:
       component: tools
       workingDir: /home/user/.m2
       commandLine: echo "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHNldHRpbmdzIHhtbG5zPSJodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy9TRVRUSU5HUy8xLjAuMCIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy9TRVRUSU5HUy8xLjAuMCBodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy94c2Qvc2V0dGluZ3MtMS4wLjAueHNkIj4KICA8cGx1Z2luR3JvdXBzPjwvcGx1Z2luR3JvdXBzPgogIDxwcm94aWVzPgogICAgPHByb3h5PgogICAgICA8aWQ+aXN0YXQtaHR0cDwvaWQ+CiAgICAgIDxhY3RpdmU+dHJ1ZTwvYWN0aXZlPgogICAgICA8cHJvdG9jb2w+aHR0cDwvcHJvdG9jb2w+CiAgICAgIDxob3N0PnByb3h5LmlzdGF0Lml0PC9ob3N0PgogICAgICA8cG9ydD44MDgwPC9wb3J0PgogICAgICA8bm9uUHJveHlIb3N0cz4KY2x1c3Rlci5sb2NhbCwuaXN0YXQuaXQsLnN2YywxMC4wLjAuMC8xNiwxMC4xMjguMC4wLzE0LDEwLjE4LjEwOC4wLzI0LDEyNy4wLjAuMSwxNzIuMzAuMC4wLzE2LGFwaS1pbnQucGFhcy5jbG91ZC5zdmlsdXBwby5pc3RhdC5pdCxsb2NhbGhvc3Q8L25vblByb3h5SG9zdHM+CiAgICA8L3Byb3h5PgogICAgPHByb3h5PgogICAgICA8aWQ+aXN0YXQtaHR0cHM8L2lkPgogICAgICA8YWN0aXZlPnRydWU8L2FjdGl2ZT4KICAgICAgPHByb3RvY29sPmh0dHBzPC9wcm90b2NvbD4KICAgICAgPGhvc3Q+cHJveHkuaXN0YXQuaXQ8L2hvc3Q+CiAgICAgIDxwb3J0PjgwODA8L3BvcnQ+CiAgICAgIDxub25Qcm94eUhvc3RzPgpjbHVzdGVyLmxvY2FsLC5pc3RhdC5pdCwuc3ZjLDEwLjAuMC4wLzE2LDEwLjEyOC4wLjAvMTQsMTAuMTguMTA4LjAvMjQsMTI3LjAuMC4xLDE3Mi4zMC4wLjAvMTYsYXBpLWludC5wYWFzLmNsb3VkLnN2aWx1cHBvLmlzdGF0Lml0LGxvY2FsaG9zdDwvbm9uUHJveHlIb3N0cz4KICAgIDwvcHJveHk+CiAgPC9wcm94aWVzPgogIDxzZXJ2ZXJzPgogICAgPHNlcnZlcj4KICAgICAgPGlkPm1hdmVuLXNuYXBzaG90czwvaWQ+CiAgICAgIDx1c2VybmFtZT5tdm5yaXNwb25kbzwvdXNlcm5hbWU+CiAgICAgIDxwYXNzd29yZD5tdm40dHl1eWhiZDY3Njc2ITwvcGFzc3dvcmQ+CiAgICA8L3NlcnZlcj4KICAgIDxzZXJ2ZXI+CiAgICAgIDxpZD5tYXZlbi1yZWxlYXNlczwvaWQ+CiAgICAgIDx1c2VybmFtZT5tdm5yaXNwb25kbzwvdXNlcm5hbWU+CiAgICAgIDxwYXNzd29yZD5tdm40dHl1eWhiZDY3Njc2ITwvcGFzc3dvcmQ+CiAgICA8L3NlcnZlcj4KICA8L3NlcnZlcnM+CiAgPG1pcnJvcnM+CiAgICA8bWlycm9yPgogICAgICA8aWQ+bmV4dXM8L2lkPgogICAgICA8dXJsPmh0dHA6Ly9hbG0wMS5pc3RhdC5pdDo4MDgxL25leHVzL3JlcG9zaXRvcnkvbWF2ZW4tY2VudHJhbDwvdXJsPgogICAgICA8bWlycm9yT2Y+Y2VudHJhbDwvbWlycm9yT2Y+CiAgICA8L21pcnJvcj4KICAgIDxtaXJyb3I+CiAgICAgIDxpZD5yZWRoYXQ8L2lkPgogICAgICA8dXJsPmh0dHA6Ly9hbG0wMS5pc3RhdC5pdDo4MDgxL25leHVzL3JlcG9zaXRvcnkvbWF2ZW4tcmVkaGF0PC91cmw+CiAgICAgIDxtaXJyb3JPZj5yZWRoYXQ8L21pcnJvck9mPgogICAgPC9taXJyb3I+CiAgPC9taXJyb3JzPgogIDxwcm9maWxlcz48L3Byb2ZpbGVzPgo8L3NldHRpbmdzPgo=" | base64 -d > settings.xml
+  - id: workspace-definition
+    exec:
+      label: Copy workspace definition
+      component: tools
+      workingDir: /projects
+      commandLine: cp -v /projects/devspaces/rispondo.code-workspace /projects
   - id: add-quarkus-cli
     exec:
       label: Add quarkus command line
