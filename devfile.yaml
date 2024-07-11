@@ -149,7 +149,7 @@ commands:
       label: 0. Manual clone projects
       component: tools
       workingDir: ${PROJECTS_ROOT}
-      commandLine: git clone https://alm.istat.it/gitlab-api/area_0305/rispondo-spese.git 
+      commandLine: git clone https://alm.istat.it/gitlab-api/area_0305/rispondo-spese.git && cd rispondo-spese && git checkout dev/CRQ000000013610-N && cd ..
       group:
         kind: build
         isDefault: true    
