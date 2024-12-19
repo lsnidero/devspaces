@@ -107,6 +107,12 @@ events:
     - source-startup-scripts
     - npm-nexus-settings
 projects:
+  - name: devspaces-temp
+    git:
+      remotes:
+        origin: "https://github.com/lsnidero/devspaces"
+      checkoutFrom:
+        revision: main
   - name: rispondo-bff
     git:
       remotes:
@@ -136,7 +142,13 @@ projects:
       remotes:
         origin: "https://alm.istat.it/gitlab-api/area_0305/receipt-ocr-service.git"
       checkoutFrom:
-        revision: dev/CRQ000000013610-N         
+        revision: dev/CRQ000000013610-N
+  - name: devspaces
+    git:
+      remotes:
+        origin: "https://alm.istat.it/gitlab-api/area_0305/devspaces.git"
+      checkoutFrom:
+        revision: dev/CRQ000000013610-N          
 commands:
   - id: install-java-17
     exec:
