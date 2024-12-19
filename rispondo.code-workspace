@@ -3,23 +3,23 @@
    
         {
             "name": "rispondo-ng",
-            "path": "rispondo-ng/SOFTWARE"
+            "path": "/projects/rispondo-ng/SOFTWARE"
         },
         {
             "name": "rispondo-bff",
-            "path": "rispondo-bff/SOFTWARE"
+            "path": "/projects/rispondo-bff/SOFTWARE"
         },
         {
             "name": "rispondo-indagini",
-            "path": "rispondo-indagini/SOFTWARE"
+            "path": "/projects/rispondo-indagini/SOFTWARE"
         },
         {
             "name": "rispondo-spese",
-            "path": "rispondo-spese/SOFTWARE"
+            "path": "/projects/rispondo-spese/SOFTWARE"
         },
         {
             "name": "receipt-ocr-service",
-            "path": "receipt-ocr-service/SOFTWARE"
+            "path": "/projects/receipt-ocr-service/SOFTWARE"
         }
     ],
     "settings": {
@@ -34,7 +34,7 @@
                 "port": 3306,
                 "driver": "MySQL",
                 "name": "rispondo-spese",
-                "database": "rispondo-spese",
+                "database": "rispondo_spese",
                 "username": "myuser"
             },
             {
@@ -47,7 +47,7 @@
                 "port": 3307,
                 "driver": "MySQL",
                 "name": "rispondo-indagini",
-                "database": "rispondo-indagini",
+                "database": "rispondo_indagini",
                 "username": "myuser"
             }
         ]
