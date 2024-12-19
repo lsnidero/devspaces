@@ -1,6 +1,5 @@
 {
     "folders": [
-   
         {
             "name": "rispondo-ng",
             "path": "/projects/rispondo-ng/SOFTWARE"
@@ -43,13 +42,23 @@
                     "enableSsl": "Disabled"
                 },
                 "previewLimit": 50,
-                "server": "localhost", 
+                "server": "localhost",
                 "port": 3307,
                 "driver": "MySQL",
                 "name": "rispondo-indagini",
                 "database": "rispondo_indagini",
                 "username": "myuser"
             }
+        ]
+    },
+    "extensions": {
+        "recommendations": [
+            "vscjava.vscode-java-debug",
+            "redhat.java",
+            "redhat.vscode-quarkus",
+            "vscjava.vscode-java-test",
+            "redhat.vscode-microprofile",
+            "redhat.vscode-xml"
         ]
     }
 }
