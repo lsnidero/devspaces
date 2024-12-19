@@ -92,7 +92,7 @@ components:
       endpoints:
         - name: mysql-indagini
           protocol: tcp
-          targetPort: 3306
+          targetPort: 3307
       cpuLimit: '1'
       cpuRequest: 500m
       memoryRequest: 350Mi
