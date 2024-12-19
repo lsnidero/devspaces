@@ -90,7 +90,7 @@ components:
         - name: MYSQL_DATABASE
           value: rispondo_indagini
         - name: MYSQL_TCP_PORT
-          value: 3307  
+          value: '3307'
       endpoints:
         - name: mysql-indagini
           protocol: tcp
