@@ -71,7 +71,7 @@ components:
         - name: MYSQL_DATABASE
           value: rispondo-spese
       endpoints:
-        - name: mysql-spese-port
+        - name: mysql-spese
           protocol: tcp
           targetPort: 3306
       cpuLimit: '1'
@@ -90,7 +90,7 @@ components:
         - name: MYSQL_DATABASE
           value: rispondo-indagini
       endpoints:
-        - name: mysql-indagini-port
+        - name: mysql-indagini
           protocol: tcp
           targetPort: 3307
       cpuLimit: '1'
