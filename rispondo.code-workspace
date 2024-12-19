@@ -2,16 +2,16 @@
     "folders": [
    
         {
-            "name": "rispondo-ionic",
-            "path": "rispondo-ionic/SOFTWARE"
+            "name": "rispondo-ng",
+            "path": "rispondo-ng/SOFTWARE"
         },
         {
             "name": "rispondo-bff",
             "path": "rispondo-bff/SOFTWARE"
         },
         {
-            "name": "rispondo-backoffice",
-            "path": "rispondo-backoffice/SOFTWARE"
+            "name": "rispondo-indagini",
+            "path": "rispondo-indagini/SOFTWARE"
         },
         {
             "name": "rispondo-spese",
@@ -33,8 +33,21 @@
                 "server": "localhost",
                 "port": 3306,
                 "driver": "MySQL",
-                "name": "rispondo",
-                "database": "mydb",
+                "name": "rispondo-spese",
+                "database": "rispondo-spese",
+                "username": "myuser"
+            },
+            {
+                "mysqlOptions": {
+                    "authProtocol": "default",
+                    "enableSsl": "Disabled"
+                },
+                "previewLimit": 50,
+                "server": "localhost", 
+                "port": 3307,
+                "driver": "MySQL",
+                "name": "rispondo-indagini",
+                "database": "rispondo-indagini",
                 "username": "myuser"
             }
         ]

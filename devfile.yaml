@@ -4,13 +4,29 @@ metadata:
 components:
   - name: tools
     container:
-      image: registry.redhat.io/devspaces/udi-rhel8@sha256:042d06a9f481cf1d65a81632a9c069c318f80537e01db7d864dfecfb0bc5714c
+      image: registry.redhat.io/devspaces/udi-rhel8@sha256:c03ff3bcdff26a373b927c2ec47c2f36a6e85f8e9c00590c6fd54da886565c6b
       env:
         - name: QUARKUS_HTTP_HOST
           value: 0.0.0.0
         - name: JAVA_TOOL_OPTIONS
           value: "-Dhttp.proxyHost=proxy.istat.it -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.istat.it -Dhttps.proxyPort=8080"
+        - name: KUBEDOCK_PARAMS
+          value: "--reverse-proxy --kubeconfig /home/user/.kube/config --initimage quay.io/agiertli/kubedock:0.13.0"
+        - name: USE_JAVA17
+          value: "true"
+        - name: KUBEDOCK_ENABLED
+          value: 'true'
+        - name: DOCKER_HOST
+          value: 'tcp://127.0.0.1:2475'
+        - name: TESTCONTAINERS_RYUK_DISABLED
+          value: 'true'
+        - name: TESTCONTAINERS_CHECKS_DISABLE
+          value: 'true'
       endpoints:
+        - exposure: none
+          name: kubedock
+          protocol: tcp
+          targetPort: 2475
         - exposure: none
           name: debug
           protocol: tcp
@@ -20,15 +36,15 @@ components:
           protocol: https
           targetPort: 8080
         - exposure: public
-          name: spese
+          name: indagini
           protocol: https
           targetPort: 8081
         - exposure: public
-          name: ionic
+          name: spese
           protocol: https
-          targetPort: 8100
+          targetPort: 8082
         - exposure: public
-          name: backoffice
+          name: ng
           protocol: https
           targetPort: 4200
       volumeMounts:
@@ -42,7 +58,7 @@ components:
   - name: m2
     volume:
       size: 2G
-  - name: mysql
+  - name: mysql-spese
     container:
       image: image-registry.openshift-image-registry.svc:5000/openshift/mysql:8.0-el8
       env:
@@ -53,15 +69,33 @@ components:
         - name: MYSQL_PASSWORD
           value: password
         - name: MYSQL_DATABASE
-          value: mydb
+          value: rispondo-spese
       endpoints:
-        - name: mysql-port
+        - name: mysql-spese-port
           protocol: tcp
           targetPort: 3306
       cpuLimit: '1'
       cpuRequest: 500m
       memoryRequest: 350Mi
-      memoryLimit: 512Mi
+  - name: mysql-indagini
+    container:
+      image: image-registry.openshift-image-registry.svc:5000/openshift/mysql:8.0-el8
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        - name: MYSQL_USER
+          value: myuser
+        - name: MYSQL_PASSWORD
+          value: password
+        - name: MYSQL_DATABASE
+          value: rispondo-indagini
+      endpoints:
+        - name: mysql-indagini-port
+          protocol: tcp
+          targetPort: 3307
+      cpuLimit: '1'
+      cpuRequest: 500m
+      memoryRequest: 350Mi
 events:
   postStart:
     - install-java-17
@@ -83,16 +117,16 @@ projects:
         origin: "https://alm.istat.it/gitlab-api/area_0305/rispondo-spese.git"
       checkoutFrom:
         revision: dev/CRQ000000013610-N
-  - name: rispondo-backoffice
+  - name: rispondo-indagini
     git:
       remotes:
-        origin: "https://alm.istat.it/gitlab-api/area_0305/rispondo-backoffice.git"
+        origin: "https://alm.istat.it/gitlab-api/area_0305/rispondo-indagini.git"
       checkoutFrom:
         revision: dev/CRQ000000013610-N
-  - name: rispondo-ionic
+  - name: rispondo-ng
     git:
       remotes:
-        origin: "https://alm.istat.it/gitlab-api/area_0305/rispondo-ionic.git"
+        origin: "https://alm.istat.it/gitlab-api/area_0305/rispondo-ng.git"
       checkoutFrom:
         revision: dev/CRQ000000013610-N
   - name: receipt-ocr-service
@@ -149,7 +183,7 @@ commands:
       label: 0. Manual clone projects
       component: tools
       workingDir: ${PROJECTS_ROOT}
-      commandLine: for project in rispondo-spese rispondo-bff rispondo-ionic rispondo-backoffice receipt-ocr-service ; do git clone https://alm.istat.it/gitlab-api/area_0305/${project}.git && cd ${project} && git checkout dev/CRQ000000013610-N && cd .. ; done
+      commandLine: for project in rispondo-spese rispondo-indagini rispondo-bff rispondo-ng receipt-ocr-service ; do git clone https://alm.istat.it/gitlab-api/area_0305/${project}.git && cd ${project} && git checkout dev/CRQ000000013610-N && cd .. ; done
       group:
         kind: build
         isDefault: true    
@@ -171,11 +205,11 @@ commands:
       group:
         kind: run
         isDefault: true
-  - id: 3-package-ionic
+  - id: 3-package-ng
     exec:
-      label: 3. Package Ionic application
+      label: 3. Package ng application
       component: tools
-      workingDir: ${PROJECTS_ROOT}/rispondo-ionic/SOFTWARE
+      workingDir: ${PROJECTS_ROOT}/rispondo-ng/SOFTWARE
       commandLine: npm install
       group:
         kind: build
