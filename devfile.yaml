@@ -69,7 +69,7 @@ components:
         - name: MYSQL_PASSWORD
           value: password
         - name: MYSQL_DATABASE
-          value: rispondo-spese
+          value: rispondo_spese
       endpoints:
         - name: mysql-spese
           protocol: tcp
@@ -88,11 +88,11 @@ components:
         - name: MYSQL_PASSWORD
           value: password
         - name: MYSQL_DATABASE
-          value: rispondo-indagini
+          value: rispondo_indagini
       endpoints:
         - name: mysql-indagini
           protocol: tcp
-          targetPort: 3307
+          targetPort: 3306
       cpuLimit: '1'
       cpuRequest: 500m
       memoryRequest: 350Mi
